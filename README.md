@@ -43,8 +43,16 @@ Ensure you have the following installed:
 ### Running the application
 
 Since the app is built using Vite, you can start the development server using:
+```bash  
+npm run dev
+```
 
-   ```bash
-   npm run dev
+This will start the Vite development server. Open your browser and navigate to http://localhost:5173 (or the port specified in your terminal) to view the app.
 
 
+### How to Play
+
+Select Game Mode: Choose between 3x3, 4x4, or 5x5 grid sizes.
+Play: Take turns placing X's and O's on the board until a player wins or it ends in a draw.
+Reset Game: Press the "Reset" button to start a new round with the same grid size.
+Change Game Mode: You can switch grid sizes at any time, which will reset the current game.
