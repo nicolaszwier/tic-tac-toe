@@ -14,7 +14,7 @@ function App() {
   const [pageState, setPageState] = useState(PageState.selectMode)
   const [gameMode, setGameMode] = useState<GameMode>(GameMode.threeXThree)
   const [nextPlayer, setNextPlayer] = useState(Player.x)
-  const [matrix, setMatrix] = useState<Player[][] | undefined[][]>()
+  const [matrix, setMatrix] = useState<Player[][] | undefined[][]>([])
   const [movesCount, setMovesCount] = useState(0)
   const [maxMoves, setMaxMoves] = useState(0)
   const [winner, setWinner] = useState<Player | undefined>(EMPTY)
@@ -23,7 +23,7 @@ function App() {
     const matrix = new Array(gameMode)
     for (let i = 0; i < matrix.length; i++) {
       matrix[i] = new Array(matrix.length).fill(EMPTY)
-      
+       
     }
     return matrix
   }, [gameMode])

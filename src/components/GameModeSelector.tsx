@@ -1,6 +1,6 @@
 import { GameMode } from "../model/GameMode"
 
-export function GameModeSelector({onSelect}) {
+export function GameModeSelector({onSelect}: {onSelect: (gameMode: GameMode) => void}) {
 
   return (
     <>
