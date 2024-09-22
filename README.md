@@ -29,3 +29,22 @@ Ensure you have the following installed:
 
    ```bash
    git clone https://github.com/nicolaszwier/tic-tac-toe.git
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd tic-tac-toe
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+
+### Running the application
+
+Since the app is built using Vite, you can start the development server using:
+
+   ```bash
+   npm run dev
+
+
