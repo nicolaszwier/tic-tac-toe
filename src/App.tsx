@@ -42,7 +42,7 @@ function App() {
     matrix[i][j] = nextPlayer
     setMovesCount(current => current + 1)
     handleChangeNextPlayer()
-    checkWinner()
+    checkWinner(i, j)
   }
 
   const handleReset = () => {
@@ -52,53 +52,19 @@ function App() {
     setMovesCount(0)
   }
 
-  const checkWinner = () => {
-    const winner = checkHorizontal() || checkVertical() || checkDiagonal()
-    if (winner) {
-      setWinner(winner)
+  const checkWinner = (i: number, j: number) => {
+    if (checkRow(i) || checkColumn(j) || checkDiagonal()) {
+      setWinner(matrix[i][j]);
     }
-  }
-
-  const checkHorizontal = (): Player | undefined => {
-    let isX: boolean = false;
-    let isO: boolean = false;
-
-    for (let i = 0; i < matrix.length; i++) {
-      const row = matrix[i];
-      isX = row.every((current) => current === Player.x)
-      isO = row.every((current) => current === Player.o)
-
-      if (isX) return Player.x;
-      if (isO) return Player.o;
-    }
-
-    return undefined
-  }
-
-  const checkVertical = (): Player | undefined => {
-    let isX: boolean = false;
-    let isO: boolean = false;
-    const flatMatrix = matrix.flat()
-    let i = 0
-    do {
-      const tempRow = []
-      let index = i;
-
-      for (let j = 0; j < matrix.length; j++) {
-        tempRow.push(flatMatrix[index])
-        index += matrix.length 
-      }
-      isX = tempRow.every((current) => current === Player.x)
-      isO = tempRow.every((current) => current === Player.o)
-
-      if (isX) return Player.x;
-      if (isO) return Player.o;
-
-      i++
-    } while (i < matrix.length)
-
-    return undefined
-  }
+  };
+  
+  const checkRow = (row: number): boolean => {
+    return matrix[row].every((current) => current === matrix[row][0] && current !== EMPTY);
+  };
+  
+  const checkColumn = (col: number): boolean => {
+    return matrix.every((row) => row[col] === matrix[0][col] && row[col] !== EMPTY);
+  };
 
   const checkDiagonal = () => {
     let isX: boolean = false;
